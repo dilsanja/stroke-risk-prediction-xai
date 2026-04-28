@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="980" viewBox="0 0 1280 980" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#546e7a"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#00796b"/>
+    </marker>
+    <marker id="arr-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#c62828"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000022"/>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════ BACKGROUND -->
+  <rect width="1280" height="980" fill="#f5f7fa"/>
+
+  <!-- ═══════════════════════════════════════════ TITLE -->
+  <rect x="0" y="0" width="1280" height="62" fill="#1a237e"/>
+  <text x="640" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="white">Brain Stroke Risk Prediction — System Architecture</text>
+  <text x="640" y="50" text-anchor="middle" font-size="12" fill="#c5cae9">Capstone Project CS5998  |  P.D.S. PERERA (258733L)  |  University of Moratuwa  |  Milestone 2</text>
+
+  <!-- ═══════════ COLUMN LABELS -->
+  <text x="310" y="84" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a237e" letter-spacing="2">PIPELINE</text>
+  <text x="960" y="84" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a237e" letter-spacing="2">EVALUATION  &amp;  OUTPUTS</text>
+
+  <!-- ════════════════════════════════════════════
+       LEFT COLUMN — PIPELINE (x centre ~310)
+  ═════════════════════════════════════════════ -->
+
+  <!-- ── 1. DATA SOURCE ── -->
+  <rect x="80" y="95" width="460" height="72" rx="10" fill="#1565c0" stroke="#0d47a1" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="white">📦  DATA SOURCE</text>
+  <text x="310" y="137" text-anchor="middle" font-size="11" fill="#bbdefb">Kaggle Stroke Prediction Dataset  —  5,110 patient records  ·  11 features  ·  Anonymised</text>
+  <text x="310" y="155" text-anchor="middle" font-size="10" fill="#90caf9">fedesoriano (2021)  ·  Binary target: stroke (0 / 1)  ·  Class imbalance ~4.87%</text>
+
+  <!-- arrow -->
+  <line x1="310" y1="167" x2="310" y2="192" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── 2. PREPROCESSING ── -->
+  <rect x="80" y="193" width="460" height="108" rx="10" fill="white" stroke="#1565c0" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="80" y="193" width="460" height="30" rx="10" fill="#1565c0"/>
+  <text x="310" y="214" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔧  DATA PREPROCESSING</text>
+
+  <!-- sub-boxes -->
+  <rect x="93"  y="232" width="100" height="54" rx="6" fill="#e3f2fd"/>
+  <text x="143" y="252" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d47a1">Missing Values</text>
+  <text x="143" y="265" text-anchor="middle" font-size="9" fill="#1565c0">BMI median</text>
+  <text x="143" y="278" text-anchor="middle" font-size="9" fill="#1565c0">imputation</text>
+
+  <rect x="203" y="232" width="100" height="54" rx="6" fill="#e3f2fd"/>
+  <text x="253" y="252" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d47a1">Outlier Clip</text>
+  <text x="253" y="265" text-anchor="middle" font-size="9" fill="#1565c0">3×IQR method</text>
+  <text x="253" y="278" text-anchor="middle" font-size="9" fill="#1565c0">BMI &amp; Glucose</text>
+
+  <rect x="313" y="232" width="100" height="54" rx="6" fill="#e3f2fd"/>
+  <text x="363" y="252" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d47a1">Label Encode</text>
+  <text x="363" y="265" text-anchor="middle" font-size="9" fill="#1565c0">5 categorical</text>
+  <text x="363" y="278" text-anchor="middle" font-size="9" fill="#1565c0">columns</text>
+
+  <rect x="423" y="232" width="105" height="54" rx="6" fill="#e3f2fd"/>
+  <text x="475" y="252" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d47a1">StandardScaler</text>
+  <text x="475" y="265" text-anchor="middle" font-size="9" fill="#1565c0">Fit on train</text>
+  <text x="475" y="278" text-anchor="middle" font-size="9" fill="#1565c0">only (no leak)</text>
+
+  <!-- arrow -->
+  <line x1="310" y1="301" x2="310" y2="326" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── 3. EDA + FEATURE ENG (side by side) ── -->
+  <rect x="80"  y="327" width="220" height="110" rx="10" fill="white" stroke="#2e7d32" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="80"  y="327" width="220" height="28"  rx="10" fill="#2e7d32"/>
+  <text x="190" y="346" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📊  EDA</text>
+  <text x="93"  y="372" font-size="9.5" fill="#1b5e20">• Correlation heatmap</text>
+  <text x="93"  y="387" font-size="9.5" fill="#1b5e20">• Age / Glucose distributions</text>
+  <text x="93"  y="402" font-size="9.5" fill="#1b5e20">• Categorical stroke rates</text>
+  <text x="93"  y="417" font-size="9.5" fill="#1b5e20">• Box plots by outcome</text>
+  <text x="93"  y="429" font-size="9.5" fill="#1b5e20">• Class imbalance visualised</text>
+
+  <rect x="320" y="327" width="220" height="110" rx="10" fill="white" stroke="#e65100" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="320" y="327" width="220" height="28"  rx="10" fill="#e65100"/>
+  <text x="430" y="346" text-anchor="middle" font-size="11" font-weight="bold" fill="white">⚙️  FEATURE ENGINEERING</text>
+  <text x="333" y="372" font-size="9.5" fill="#bf360c">• age_group  (5 bins)</text>
+  <text x="333" y="387" font-size="9.5" fill="#bf360c">• glucose_cat  (normal/pre/diabetes)</text>
+  <text x="333" y="402" font-size="9.5" fill="#bf360c">• bmi_cat  (WHO categories)</text>
+  <text x="333" y="417" font-size="9.5" fill="#bf360c">• cardio_risk  (HTN | heart dis.)</text>
+  <text x="333" y="429" font-size="9.5" fill="#bf360c">• 15 features total after eng.</text>
+
+  <!-- arrow -->
+  <line x1="310" y1="437" x2="310" y2="462" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── 4. SMOTE ── -->
+  <rect x="145" y="463" width="330" height="52" rx="10" fill="#4a148c" stroke="#311b92" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="485" text-anchor="middle" font-size="13" font-weight="bold" fill="white">⚖️  SMOTE  Oversampling</text>
+  <text x="310" y="503" text-anchor="middle" font-size="10" fill="#e1bee7">Training set only  ·  4.87% → 50%  ·  Synthetic minority examples</text>
+
+  <!-- arrow -->
+  <line x1="310" y1="515" x2="310" y2="540" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── 5. ML MODELS (3×3 grid) ── -->
+  <rect x="55" y="541" width="510" height="232" rx="10" fill="white" stroke="#6a1b9a" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="55" y="541" width="510" height="30"  rx="10" fill="#6a1b9a"/>
+  <text x="310" y="562" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🤖  MACHINE LEARNING MODELS  (9 Total)</text>
+
+  <!-- Row 1 -->
+  <rect x="68"  y="581" width="148" height="54" rx="7" fill="#ede7f6"/>
+  <text x="142" y="600" text-anchor="middle" font-size="10" font-weight="bold" fill="#4a148c">1. Logistic Regression</text>
+  <text x="142" y="614" text-anchor="middle" font-size="9"  fill="#6a1b9a">📌 Baseline · lbfgs</text>
+  <text x="142" y="627" text-anchor="middle" font-size="9"  fill="#7b1fa2">max_iter=1000</text>
+
+  <rect x="228" y="581" width="148" height="54" rx="7" fill="#fce4ec"/>
+  <text x="302" y="600" text-anchor="middle" font-size="10" font-weight="bold" fill="#880e4f">2. Decision Trees</text>
+  <text x="302" y="614" text-anchor="middle" font-size="9"  fill="#ad1457">Tree-based · Single</text>
+  <text x="302" y="627" text-anchor="middle" font-size="9"  fill="#ad1457">max_depth=10</text>
+
+  <rect x="388" y="581" width="163" height="54" rx="7" fill="#e8f5e9"/>
+  <text x="469" y="600" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">3. Random Forest</text>
+  <text x="469" y="614" text-anchor="middle" font-size="9"  fill="#2e7d32">Bagging · n=200</text>
+  <text x="469" y="627" text-anchor="middle" font-size="9"  fill="#2e7d32">max_depth=12</text>
+
+  <!-- Row 2 -->
+  <rect x="68"  y="645" width="148" height="54" rx="7" fill="#e3f2fd"/>
+  <text x="142" y="664" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d47a1">4. Naive Bayes</text>
+  <text x="142" y="678" text-anchor="middle" font-size="9"  fill="#1565c0">GaussianNB</text>
+  <text x="142" y="691" text-anchor="middle" font-size="9"  fill="#1565c0">Highest recall</text>
+
+  <rect x="228" y="645" width="148" height="54" rx="7" fill="#fff3e0"/>
+  <text x="302" y="664" text-anchor="middle" font-size="10" font-weight="bold" fill="#e65100">5. SVM</text>
+  <text x="302" y="678" text-anchor="middle" font-size="9"  fill="#bf360c">RBF Kernel · C=1.0</text>
+  <text x="302" y="691" text-anchor="middle" font-size="9"  fill="#bf360c">class_weight=balanced</text>
+
+  <rect x="388" y="645" width="163" height="54" rx="7" fill="#fff8e1"/>
+  <text x="469" y="664" text-anchor="middle" font-size="10" font-weight="bold" fill="#f57f17">6. K-NN</text>
+  <text x="469" y="678" text-anchor="middle" font-size="9"  fill="#f9a825">k=7 · Euclidean</text>
+  <text x="469" y="691" text-anchor="middle" font-size="9"  fill="#f9a825">Instance-based</text>
+
+  <!-- Row 3 -->
+  <rect x="68"  y="709" width="148" height="54" rx="7" fill="#e8eaf6"/>
+  <text x="142" y="728" text-anchor="middle" font-size="10" font-weight="bold" fill="#283593">7. XGBoost</text>
+  <text x="142" y="742" text-anchor="middle" font-size="9"  fill="#303f9f">n=300 · lr=0.05</text>
+  <text x="142" y="755" text-anchor="middle" font-size="9"  fill="#303f9f">scale_pos_weight</text>
+
+  <rect x="228" y="709" width="148" height="54" rx="7" fill="#e0f2f1"/>
+  <text x="302" y="728" text-anchor="middle" font-size="10" font-weight="bold" fill="#004d40">8. CatBoost</text>
+  <text x="302" y="742" text-anchor="middle" font-size="9"  fill="#00695c">iter=500 · depth=6</text>
+  <text x="302" y="755" text-anchor="middle" font-size="9"  fill="#00695c">auto_class_weights</text>
+
+  <rect x="388" y="709" width="163" height="54" rx="7" fill="#fce4ec"/>
+  <text x="469" y="728" text-anchor="middle" font-size="10" font-weight="bold" fill="#880e4f">9. ANN</text>
+  <text x="469" y="742" text-anchor="middle" font-size="9"  fill="#ad1457">128→64→32 · ReLU</text>
+  <text x="469" y="755" text-anchor="middle" font-size="9"  fill="#ad1457">Dropout·EarlyStopping</text>
+
+  <!-- arrow down from models -->
+  <line x1="310" y1="773" x2="310" y2="800" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── 6. TECH STACK ── -->
+  <rect x="80" y="801" width="460" height="46" rx="10" fill="#37474f" stroke="#263238" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="820" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🛠  Technologies</text>
+  <text x="310" y="836" text-anchor="middle" font-size="9.5" fill="#b0bec5">Python · Scikit-learn · XGBoost · CatBoost · TensorFlow/Keras · Pandas · NumPy · Seaborn · SHAP · Imbalanced-learn</text>
+
+
+  <!-- ════════════════════════════════════════════
+       RIGHT COLUMN — EVALUATION + OUTPUTS
+  ═════════════════════════════════════════════ -->
+
+  <!-- dashed divider -->
+  <line x1="620" y1="90" x2="620" y2="900" stroke="#cfd8dc" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- ── EVALUATION ── -->
+  <rect x="650" y="95" width="590" height="220" rx="10" fill="white" stroke="#00796b" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="650" y="95" width="590" height="30"  rx="10" fill="#00796b"/>
+  <text x="945" y="116" text-anchor="middle" font-size="13" font-weight="bold" fill="white">📈  MODEL EVALUATION</text>
+
+  <!-- left col -->
+  <text x="668" y="146" font-size="10" font-weight="bold" fill="#004d40">Metrics (all 9 models)</text>
+  <text x="678" y="162" font-size="9.5" fill="#00695c">✓  Accuracy</text>
+  <text x="678" y="176" font-size="9.5" fill="#00695c">✓  Precision</text>
+  <text x="678" y="190" font-size="9.5" fill="#00695c">✓  Recall  (key — medical context)</text>
+  <text x="678" y="204" font-size="9.5" fill="#00695c">✓  F1-Score</text>
+  <text x="678" y="218" font-size="9.5" fill="#00695c">✓  AUC-ROC</text>
+  <text x="678" y="232" font-size="9.5" fill="#00695c">✓  Classification Report</text>
+
+  <!-- mid col -->
+  <text x="870" y="146" font-size="10" font-weight="bold" fill="#004d40">Visualisations</text>
+  <text x="880" y="162" font-size="9.5" fill="#00695c">✓  9 Confusion Matrices (3×3 grid)</text>
+  <text x="880" y="176" font-size="9.5" fill="#00695c">✓  9 ROC Curves</text>
+  <text x="880" y="190" font-size="9.5" fill="#00695c">✓  Feature importance (RF + XGBoost)</text>
+  <text x="880" y="204" font-size="9.5" fill="#00695c">✓  ANN training loss / accuracy plots</text>
+  <text x="880" y="218" font-size="9.5" fill="#00695c">✓  All-model performance bar chart</text>
+
+  <text x="668" y="258" font-size="10" font-weight="bold" fill="#004d40">Validation</text>
+  <text x="678" y="274" font-size="9.5" fill="#00695c">✓  Stratified 80/20 Train/Test split</text>
+  <text x="678" y="288" font-size="9.5" fill="#00695c">✓  5-Fold Stratified Cross-Validation  (8 sklearn models)</text>
+  <text x="678" y="302" font-size="9.5" fill="#00695c">✓  CV AUC-ROC box plot comparison</text>
+
+  <!-- arrow -->
+  <line x1="945" y1="315" x2="945" y2="340" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── XAI ── -->
+  <rect x="650" y="341" width="590" height="148" rx="10" fill="white" stroke="#c62828" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="650" y="341" width="590" height="30"  rx="10" fill="#c62828"/>
+  <text x="945" y="362" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🔍  EXPLAINABLE AI  (XAI)</text>
+
+  <text x="668" y="393" font-size="9.5" fill="#b71c1c">•  SHAP (SHapley Additive exPlanations) — tree models</text>
+  <text x="668" y="409" font-size="9.5" fill="#b71c1c">•  SHAP summary plot — feature impact direction &amp; magnitude</text>
+  <text x="668" y="425" font-size="9.5" fill="#b71c1c">•  SHAP bar chart — global mean |SHAP| importance</text>
+  <text x="668" y="441" font-size="9.5" fill="#b71c1c">•  Applied to: Random Forest + XGBoost</text>
+  <text x="668" y="457" font-size="9.5" fill="#b71c1c">•  Feature importance cross-validated with RF and XGBoost scores</text>
+  <text x="940" y="393" font-size="9.5" fill="#b71c1c">•  Global explanations — population-level insights</text>
+  <text x="940" y="409" font-size="9.5" fill="#b71c1c">•  Local explanations — individual patient predictions</text>
+  <text x="940" y="425" font-size="9.5" fill="#b71c1c">•  Supports clinical interpretability</text>
+  <text x="940" y="457" font-size="9.5" font-style="italic" fill="#c62828">Top features: Age · Avg Glucose Level · BMI · Cardio Risk</text>
+
+  <!-- arrow -->
+  <line x1="945" y1="489" x2="945" y2="514" stroke="#546e7a" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── OUTPUTS ── -->
+  <rect x="650" y="515" width="590" height="135" rx="10" fill="#263238" stroke="#102027" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="650" y="515" width="590" height="30"  rx="10" fill="#102027"/>
+  <text x="945" y="536" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🚀  OUTPUTS</text>
+
+  <text x="668" y="563" font-size="9.5" fill="#cfd8dc">✓  Best-performing model serialised (Joblib / pickle)</text>
+  <text x="668" y="578" font-size="9.5" fill="#cfd8dc">✓  Full performance metrics table — all 9 models</text>
+  <text x="668" y="593" font-size="9.5" fill="#cfd8dc">✓  EDA visualisations &amp; feature engineering report</text>
+  <text x="668" y="608" font-size="9.5" fill="#cfd8dc">✓  XAI / SHAP plots (RF + XGBoost)</text>
+  <text x="940" y="563" font-size="9.5" fill="#cfd8dc">✓  Confusion matrices + ROC curves (all 9)</text>
+  <text x="940" y="578" font-size="9.5" fill="#cfd8dc">✓  ANN training history plots</text>
+  <text x="940" y="593" font-size="9.5" fill="#cfd8dc">✓  5-fold CV comparison box plot</text>
+  <text x="940" y="622" font-size="9.5" font-style="italic" fill="#78909c">[ Milestone 3 — Streamlit Web App for real-time stroke risk prediction ]</text>
+
+  <!-- ════════ CROSS ARROWS (pipeline → right column) ════════ -->
+  <!-- Preprocessing → Evaluation -->
+  <line x1="540" y1="247" x2="640" y2="247" stroke="#00796b" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-teal)"/>
+
+  <!-- Models → XAI -->
+  <line x1="565" y1="700" x2="635" y2="420" stroke="#c62828" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
+
+  <!-- ════════════════════════════════════════════
+       BOTTOM — ANN ARCHITECTURE DETAIL
+  ═════════════════════════════════════════════ -->
+  <rect x="55" y="870" width="1185" height="90" rx="10" fill="white" stroke="#880e4f" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="55" y="870" width="1185" height="28" rx="10" fill="#880e4f"/>
+  <text x="648" y="889" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🧬  ANN Architecture Detail  —  Model 9</text>
+
+  <!-- ANN layer boxes -->
+  <rect x="75"  y="906" width="90"  height="40" rx="6" fill="#fce4ec"/>
+  <text x="120" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#880e4f">Input Layer</text>
+  <text x="120" y="936" text-anchor="middle" font-size="8.5" fill="#ad1457">15 features</text>
+  <line x1="165" y1="926" x2="190" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="192" y="906" width="110" height="40" rx="6" fill="#f8bbd0"/>
+  <text x="247" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#880e4f">Dense(128, ReLU)</text>
+  <text x="247" y="936" text-anchor="middle" font-size="8.5" fill="#ad1457">BatchNorm · Drop(0.3)</text>
+  <line x1="302" y1="926" x2="325" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="327" y="906" width="110" height="40" rx="6" fill="#f8bbd0"/>
+  <text x="382" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#880e4f">Dense(64, ReLU)</text>
+  <text x="382" y="936" text-anchor="middle" font-size="8.5" fill="#ad1457">BatchNorm · Drop(0.3)</text>
+  <line x1="437" y1="926" x2="460" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="462" y="906" width="110" height="40" rx="6" fill="#f8bbd0"/>
+  <text x="517" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#880e4f">Dense(32, ReLU)</text>
+  <text x="517" y="936" text-anchor="middle" font-size="8.5" fill="#ad1457">Dropout(0.3)</text>
+  <line x1="572" y1="926" x2="595" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="597" y="906" width="110" height="40" rx="6" fill="#fce4ec"/>
+  <text x="652" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#880e4f">Dense(1, Sigmoid)</text>
+  <text x="652" y="936" text-anchor="middle" font-size="8.5" fill="#ad1457">Output layer</text>
+  <line x1="707" y1="926" x2="730" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="732" y="906" width="110" height="40" rx="6" fill="#f3e5f5"/>
+  <text x="787" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#4a148c">Optimizer: Adam</text>
+  <text x="787" y="936" text-anchor="middle" font-size="8.5" fill="#6a1b9a">lr=0.001 · BCE loss</text>
+  <line x1="842" y1="926" x2="865" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="867" y="906" width="120" height="40" rx="6" fill="#ede7f6"/>
+  <text x="927" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#4a148c">Early Stopping</text>
+  <text x="927" y="936" text-anchor="middle" font-size="8.5" fill="#6a1b9a">patience=10 · val_loss</text>
+  <line x1="987" y1="926" x2="1010" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="1012" y="906" width="120" height="40" rx="6" fill="#e8f5e9"/>
+  <text x="1072" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#1b5e20">100 Epochs</text>
+  <text x="1072" y="936" text-anchor="middle" font-size="8.5" fill="#2e7d32">batch=32 · class_weight</text>
+  <line x1="1132" y1="926" x2="1155" y2="926" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="1157" y="906" width="72"  height="40" rx="6" fill="#e8f5e9"/>
+  <text x="1193" y="922" text-anchor="middle" font-size="9"  font-weight="bold" fill="#1b5e20">Stroke</text>
+  <text x="1193" y="936" text-anchor="middle" font-size="8.5" fill="#2e7d32">Risk Score</text>
+
+</svg>

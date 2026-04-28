@@ -1,0 +1,34 @@
+{
+  "milestone": "M4",
+  "model_name": "Stacking Ensemble (LR+BRF+NB+GB)",
+  "decision_threshold": 0.0768,
+  "feature_names": [
+    "gender",
+    "age",
+    "hypertension",
+    "heart_disease",
+    "ever_married",
+    "work_type",
+    "Residence_type",
+    "avg_glucose_level",
+    "bmi",
+    "smoking_status",
+    "age_group",
+    "glucose_cat",
+    "bmi_cat",
+    "cardio_risk"
+  ],
+  "test_metrics": {
+    "auc_roc": 0.843,
+    "ap": 0.2497,
+    "brier": 0.0412,
+    "recall_opt": 0.8,
+    "prec_opt": 0.177,
+    "f1_opt": 0.2899
+  },
+  "m2_baseline": {
+    "auc_roc": 0.8047,
+    "recall": 0.76,
+    "model": "Naive Bayes"
+  }
+}
