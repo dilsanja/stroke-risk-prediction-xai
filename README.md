@@ -276,7 +276,7 @@ neurascan-stroke-prediction/
 ---
 ## 🚀 Live Demo
 
-👉 **Try NeuraScan Live: (https://yourapp.streamlit.app](https://stroke-risk-prediction-xai-amragjtxuzu3ibt8dzhyp9.streamlit.app)**
+👉 **Try NeuraScan Live: https://yourapp.streamlit.app](https://stroke-risk-prediction-xai-amragjtxuzu3ibt8dzhyp9.streamlit.app **
 
 ---
 
