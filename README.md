@@ -274,6 +274,11 @@ neurascan-stroke-prediction/
 ![Patient Data Summary](docs/screenshots/screen5_patient.png)
 
 ---
+## 🚀 Live Demo
+
+👉 **[Try NeuraScan Live]([https://yourapp.streamlit.app](https://stroke-risk-prediction-xai-amragjtxuzu3ibt8dzhyp9.streamlit.app))**
+
+---
 
 ## 🚀 Quick Start
 
