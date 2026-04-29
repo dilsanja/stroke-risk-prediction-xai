@@ -293,7 +293,7 @@ pip (Python package manager)
 
 ```bash
 git clone https://github.com/dilsanja/stroke-risk-prediction-xai.git
-cd neurascan-stroke-prediction
+cd stroke-risk-prediction-xai
 ```
 
 ### Step 2 — Install Dependencies
