@@ -292,7 +292,7 @@ pip (Python package manager)
 ### Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/neurascan-stroke-prediction.git
+git clone https://github.com/dilsanja/stroke-risk-prediction-xai.git
 cd neurascan-stroke-prediction
 ```
 
